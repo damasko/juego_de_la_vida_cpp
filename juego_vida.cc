@@ -12,6 +12,10 @@ void sleep(unsigned int mseconds) {
 
 void rellena_matriz(Matriz &a) {
     cout << "Rellene el tablero con las celulas iniciales 1(vivas) o 0(muertas)" << endl;
+    cout << endl;
+    cout << "Ej: tablero 3x3" << endl;
+    cout << "1 0 1" << endl << "0 1 0" << endl << "1 1 0" << endl;
+    cout << endl;
     for (int i = 0; i < a.size(); ++i) {
         for (int j = 0; j < a[0].size(); ++j) {
             if (i == 0 or i == a.size()-1) a[i][j] = '=';
@@ -42,7 +46,7 @@ void modifica_vector(Matriz &a) {
     //i empieza en 1 y es matriz-1 para saltarme los margenes que contienen el cuadro
     for (int i = 1; i < a.size()-1; ++i) {
         for (int j = 1; j < a[0].size()-1; ++j) {
-            //Mirar si con un bucle de 3 iteracion desde -1 a 1 iria mejor o un array 3x3. lioso...
+            //comprobacion del estado de las celulas adyacentes
             if (a[i-1][j-1] == '1') ++vecinos;
             if (a[i-1][j] == '1') ++vecinos;
             if (a[i-1][j+1] == '1') ++vecinos;
