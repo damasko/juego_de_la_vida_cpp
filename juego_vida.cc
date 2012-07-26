@@ -41,7 +41,6 @@ void dibuja_tablero(Matriz &a) {
 
 void modifica_vector(Matriz &a) {
     Matriz copy_a = a;
-    //COPY_A FUNCIONA CORRECTAMENTE, continuar trazas
     int vecinos = 0;
     //i empieza en 1 y es matriz-1 para saltarme los margenes que contienen el cuadro
     for (int i = 1; i < a.size()-1; ++i) {
@@ -59,7 +58,7 @@ void modifica_vector(Matriz &a) {
             //En estos casos muere irremediablemente :(
             else if (vecinos == 3) copy_a[i][j] = '1';
             //Ya que tanto si esta viva como si esta muerta al siguiente turno vivira si vale 3
-            else if (vecinos == 2) copy_a[i][j] = a[i][j];
+            else copy_a[i][j] = a[i][j]; //para 2 vecinos
             //En caso de tener 2 vecinos se quedará como está, si esta viva vive si no sigue muerta xD
             vecinos = 0;
         }
@@ -84,10 +83,10 @@ int main() {
     cout << string(50, '\n');
     //Aunque el juego de la vida es infinito lo limito a 20 por ejemplo
     for (int i = 0; i < 20; ++i) {
+        cout << string(50, '\n');
         dibuja_tablero(a);
         modifica_vector(a);
         sleep(1000);
-        cout << string(50, '\n');
     }
 
 }
