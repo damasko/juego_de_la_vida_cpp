@@ -11,7 +11,7 @@ void sleep(unsigned int mseconds) {
 }
 
 void rellena_matriz(Matriz &a) {
-    cout << "Rellene el tablero con las celulas iniciales" << endl;
+    cout << "Rellene el tablero con las celulas iniciales 1(vivas) o 0(muertas)" << endl;
     for (int i = 0; i < a.size(); ++i) {
         for (int j = 0; j < a[0].size(); ++j) {
             if (i == 0 or i == a.size()-1) a[i][j] = '=';
