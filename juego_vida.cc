@@ -1,10 +1,10 @@
 #include <iostream>
 #include <vector>
-using namespace std;
-typedef vector < vector<char> > Matriz;
-
 #include <time.h>
-//Esta funcion no es mia
+using namespace std;
+
+typedef vector < vector<char> > Matriz; 
+
 void sleep(unsigned int mseconds) {
     clock_t goal = mseconds + clock();
     while (goal > clock());
@@ -12,10 +12,13 @@ void sleep(unsigned int mseconds) {
 
 void rellena_matriz(Matriz &a) {
     cout << "Rellene el tablero con las celulas iniciales 1(vivas) o 0(muertas)" << endl;
-    cout << endl;
+    cout << endl;  
     cout << "Ej: tablero 3x3" << endl;
-    cout << "1 0 1" << endl << "0 1 0" << endl << "1 1 0" << endl;
+    cout << "1 0 1" << endl 
+         << "0 1 0" << endl 
+         << "1 1 0" << endl; 
     cout << endl;
+    
     for (int i = 0; i < a.size(); ++i) {
         for (int j = 0; j < a[0].size(); ++j) {
             if (i == 0 or i == a.size()-1) a[i][j] = '=';
@@ -40,7 +43,7 @@ void dibuja_tablero(Matriz &a) {
 }
 
 void modifica_vector(Matriz &a) {
-    Matriz copy_a = a;
+    Matriz copy_a = a; 
     int vecinos = 0;
     //i empieza en 1 y es matriz-1 para saltarme los margenes que contienen el cuadro
     for (int i = 1; i < a.size()-1; ++i) {
@@ -64,7 +67,7 @@ void modifica_vector(Matriz &a) {
         }
     }
 
-    //Se supone que ya tenemos el nuevo array con la nueva generacion, asi que se lo copio al array original, ojala chufle
+    //Ya tenemos el array copia con la nueva generacion, asi que sobreescribo al array original con este.
     a = copy_a;
 
 }
@@ -81,8 +84,8 @@ int main() {
     Matriz a (largo, vector<char> (alto));
     rellena_matriz(a);
     cout << string(50, '\n');
-    //Aunque el juego de la vida es infinito lo limito a 20 por ejemplo
-    for (int i = 0; i < 20; ++i) {
+    //Aunque el juego de la vida es infinito lo limito a 30 por ejemplo
+    for (int i = 0; i < 30; ++i) {
         cout << string(50, '\n');
         dibuja_tablero(a);
         modifica_vector(a);
